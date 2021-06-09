@@ -1,6 +1,6 @@
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra
-SRC			=	push_swap.c checks.c
+#CFLAGS		=	-Wall -Werror -Wextra
+SRC			=	push_swap.c checks.c read_line.c ope.c do_ope.c solve.c
 OBJ 		=	$(SRC:.c=.o)
 NAME		=	push_swap
 LIBNAME		=	libft.a
@@ -18,6 +18,7 @@ $(NAME):	$(OBJ)
 
 clean:
 			@rm -f *.o
+			@rm -f libft/*.o
 			@echo "\033[32m\n[✓]\033[0m		[*.o deleted]"
 
 fclean:		clean
