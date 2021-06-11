@@ -1,6 +1,6 @@
 CC			=	gcc
 #CFLAGS		=	-Wall -Werror -Wextra
-SRC			=	push_swap.c checks.c read_line.c ope.c do_ope.c solve.c
+SRC			=	push_swap.c checks.c read_line.c ope.c do_ope.c solve_less_than_5.c solve_less_than_100.c solve_utils.c
 OBJ 		=	$(SRC:.c=.o)
 NAME		=	push_swap
 LIBNAME		=	libft.a
