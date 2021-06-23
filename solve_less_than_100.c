@@ -63,9 +63,9 @@ void	solve_half(t_list **stack_a, t_list **stack_b)
 	while ((*stack_a) != NULL)
 	{
 		if ((intptr_t)(*stack_a)->content != median)
-			do_pb(stack_a, stack_b);
+			do_pb(stack_a, stack_b, True);
 		else
-			do_ra(stack_a);
+			do_ra(stack_a, True);
 	}
 	printf("__test__\n");
 	while ((*stack_b) != NULL)
@@ -73,8 +73,8 @@ void	solve_half(t_list **stack_a, t_list **stack_b)
 		printf("__test__\n");
 		min = find_min(stack_b);
 		while ((intptr_t)(*stack_b)->content != min)
-			do_ra(stack_a);
-		do_pa(stack_a, stack_b);
+			do_ra(stack_a, True);
+		do_pa(stack_a, stack_b, True);
 	}
 	return ;
 }

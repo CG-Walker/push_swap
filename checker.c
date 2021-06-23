@@ -6,7 +6,7 @@
 /*   By: cgoncalv <cgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:15:51 by cgoncalv          #+#    #+#             */
-/*   Updated: 2021/06/23 14:39:33 by cgoncalv         ###   ########.fr       */
+/*   Updated: 2021/06/23 17:04:48 by cgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void    do_instr(char *instr, t_list **stack_a, t_list **stack_b)
 {
     if (ft_strcmp(instr, "sa"))
-        do_sa(stack_a);
+        do_sa(stack_a, False);
     else if (ft_strcmp(instr, "sb"))
-        do_sb(stack_b);
-    else if (ft_strcmp(instr, 4))
+        do_sb(stack_b, False);
+    else if (ft_strcmp(instr, NULL))
     {
         if (check_sorted((*stack_a)))
             printf("Sorted !");
