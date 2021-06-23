@@ -5,17 +5,24 @@
 # include <stdio.h>
 # include <dirent.h>
 # include <stdlib.h>
-# include <malloc.h>
+//# include <malloc.h>
 # include <limits.h>
 
 # include "libft/libft.h"
 
 /*
-** push_swap
+** push_swap.c
 */
 
 int		    main(int argc, char *argv[]);
 void	    print_list(t_list *stack);
+
+/*
+** init_stack_a.c
+*/
+
+t_list      *init_stack_a(t_list *stack_a, char *argv[]);
+t_list      *init_stack_a_with_var(t_list *stack_a, char *argv[]);
 
 /*
 ** solve_less_than_5.c
