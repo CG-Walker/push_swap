@@ -18,37 +18,34 @@ void	solve_3(t_list **stack_a)
 
 void	solve_4(t_list **stack_a, t_list **stack_b)
 {
-	long int	min;
+	long int	max;
 
-	min = find_min(stack_a);
-	while ((intptr_t)(*stack_a)->content != min)
+	max = find_big(stack_a);
+	while ((intptr_t)(*stack_a)->content != max)
 		do_ra(stack_a, True);
 	do_pb(stack_a, stack_b, True);
 	solve_3(stack_a);
 	do_pa(stack_a, stack_b, True);
-	do_rra(stack_a, True);
+	do_ra(stack_a, True);
 }
 
 void	solve_5(t_list **stack_a, t_list **stack_b)
 {
-	long int	max;
+	long int	median;
 
+	median = find_median((*stack_a));
 	while (ft_lstsize((*stack_a)) != 3)
 	{
-		max = find_big(stack_a);
-		//printf("max = %li\n", max);
-		while ((intptr_t)(*stack_a)->content != max)
-			do_ra(stack_a, True);
-		if ((intptr_t)(*stack_a)->content == max)
+		if ((intptr_t)(*stack_a)->content < median)
 			do_pb(stack_a, stack_b, True);
-		//printf("size : %li\n", ft_lstsize((*stack_a)));
+		if ((intptr_t)(*stack_a)->content >= median)
+			do_ra(stack_a, True);
 	}
 	solve_3(stack_a);
-	if ((intptr_t)(*stack_b)->content > (intptr_t)(*stack_b)->next->content)
-		solve_2(stack_b);
+	if ((intptr_t)(*stack_b)->content < (intptr_t)(*stack_b)->next->content)
+		do_sb(stack_b, True);
 	do_pa(stack_a, stack_b, True);
 	do_pa(stack_a, stack_b, True);
-	return ;
 }
 
 void	solve_5_or_less(t_list **stack_a, t_list **stack_b)

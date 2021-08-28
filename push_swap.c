@@ -6,7 +6,7 @@ int	push_swap(t_list **stack_a, t_list **stack_b)
 	{
 		if (ft_lstsize(*stack_a) <= 5)
 			solve_5_or_less(stack_a, stack_b);
-		else if (ft_lstsize(*stack_a) <= 100)
+		else
 			solve_half(stack_a, stack_b);
 	}
 	return (0);
@@ -44,11 +44,16 @@ int	main(int argc, char *argv[])
 		stack_a = init_stack_a_with_var(stack_a, argv);
 	else
 		stack_a = init_stack_a(stack_a, argv);
-	printf("Init :\na : ");
+/* 	printf("Init :\na : ");
 	print_list(stack_a);
 	printf("b : ");
-	print_list(stack_b);
+	print_list(stack_b); */
 	push_swap(&stack_a, &stack_b);
-	printf("\nAfter :\na : ");
-	print_list(stack_a);
+/* 	printf("\nAfter :\na : ");
+	print_list(stack_a); */
+	if (check_sorted(stack_a) == True)
+		printf("OK\n");
+	else
+		printf("KO\n");
+	exit(0);
 }

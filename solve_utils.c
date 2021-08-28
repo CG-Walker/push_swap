@@ -38,8 +38,8 @@ long int	find_median(t_list *stack)
 {
 	size_t		size;
 	long int	*array;
-	
-	array = convert_in_sorted_array(stack);
-	
-	return (array[ft_lstsize(stack)/2]);
+
+	array = convert_in_array(stack);
+	array = sort_array(array, ft_lstsize(stack));
+	return (array[ft_lstsize(stack) / 2]);
 }

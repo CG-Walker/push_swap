@@ -23,7 +23,7 @@ void	ope_pa(t_list **stack_a, t_list **stack_b) // Ne pas oublier de free stack_
 	//free((*stack_b)->content);
 	//free((*stack_a)->next);
 	(*stack_b) = new_begin;
-	ft_lstadd_back(stack_a, new);
+	ft_lstadd_front(stack_a, new);
 	return ;
 }
 
@@ -39,7 +39,7 @@ void	ope_pb(t_list **stack_a, t_list **stack_b) // Ne pas oublier de free stack_
 	//free((*stack_a)->content);
 	//free((*stack_a)->next);
 	(*stack_a) = new_begin;
-	ft_lstadd_back(stack_b, new);
+	ft_lstadd_front(stack_b, new);
 	return ;
 }
 

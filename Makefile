@@ -1,25 +1,31 @@
 CC			=	gcc
 #CFLAGS		=	-Wall -Werror -Wextra
-SRC			=	init_stack_a.c checks.c read_line.c ope.c do_ope.c solve_less_than_5.c solve_less_than_100.c solve_utils.c
+SRC			=	checks.c do_ope_1.c do_ope_2.c do_ope_3.c \
+				init_stack_a.c ope.c read_line.c \
+				solve_half.c solve_half_utils.c \
+				solve_less_than_5.c solve_utils.c
+				
 OBJ 		=	$(SRC:.c=.o)
 NAME		=	push_swap
 LIBNAME		=	libft.a
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	
+			@$(CC) -c $(SRC) push_swap.c
 			@make -C ./libft
 			@cp ./libft/libft.a $(LIBNAME)
-			@$(CC) ${OBJ} $(LIBNAME) -o $(NAME)
+			@$(CC) ${OBJ} push_swap.o $(LIBNAME) -o $(NAME)
 			@echo "\033[32m[✓]\033[0m		[$(NAME) compiled]"
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-bonus:	
+bonus:		
+			@$(CC) -c $(SRC) checker.c
 			@make -C ./libft
 			@cp ./libft/libft.a $(LIBNAME)
-			@$(CC) $(SRC) checker.c $(LIBNAME) -o checker
+			@$(CC) $(OBJ) checker.o $(LIBNAME) -o checker
 			@echo "\033[32m[✓]\033[0m		[$(NAME) compiled]"
 
 
