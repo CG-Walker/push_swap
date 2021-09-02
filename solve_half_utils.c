@@ -50,10 +50,25 @@ long int	*convert_in_array(t_list *stack)
 	return (array);
 }
 
+void	lst_free(t_list *list)
+{
+	t_list	*next;
+
+	while (list)
+	{
+		next = list->next;
+		free(list);
+		list = next;
+	}
+	free(list);
+}
+
 void	lst_copy(t_list **alst, t_list *list_to_copy)
 {
 	t_list	*tmp_list;
+	t_list	*begin;
 
+	begin = list_to_copy;
 	tmp_list = NULL;
 	while (list_to_copy != NULL)
 	{
@@ -61,6 +76,8 @@ void	lst_copy(t_list **alst, t_list *list_to_copy)
 		list_to_copy = list_to_copy->next;
 	}
 	ft_lstadd_front(alst, ft_lstnew(tmp_list));
+	list_to_copy = begin;
+	lst_free(list_to_copy);
 }
 
 void	del_nb(void *nb, t_list **chunk)

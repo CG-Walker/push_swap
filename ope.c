@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	ope_sa_sb(t_list **stack) // A checker
+void	ope_sa_sb(t_list **stack)
 {
 	void	*tmp_content;
 
@@ -11,7 +11,7 @@ void	ope_sa_sb(t_list **stack) // A checker
 	(*stack)->next->content = tmp_content;
 }
 
-void	ope_pa(t_list **stack_a, t_list **stack_b) // Ne pas oublier de free stack_b
+void	ope_pa(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*new;
 	t_list	*new_begin;
@@ -20,14 +20,13 @@ void	ope_pa(t_list **stack_a, t_list **stack_b) // Ne pas oublier de free stack_
 		return ;
 	new = ft_lstnew((*stack_b)->content);
 	new_begin = (*stack_b)->next;
-	//free((*stack_b)->content);
-	//free((*stack_a)->next);
+	free((*stack_b));
 	(*stack_b) = new_begin;
 	ft_lstadd_front(stack_a, new);
 	return ;
 }
 
-void	ope_pb(t_list **stack_a, t_list **stack_b) // Ne pas oublier de free stack_a
+void	ope_pb(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*new;
 	t_list	*new_begin;
@@ -36,8 +35,7 @@ void	ope_pb(t_list **stack_a, t_list **stack_b) // Ne pas oublier de free stack_
 		return ;
 	new = ft_lstnew((*stack_a)->content);
 	new_begin = (*stack_a)->next;
-	//free((*stack_a)->content);
-	//free((*stack_a)->next);
+	free((*stack_a));
 	(*stack_a) = new_begin;
 	ft_lstadd_front(stack_b, new);
 	return ;

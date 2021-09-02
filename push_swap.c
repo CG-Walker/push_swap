@@ -40,17 +40,11 @@ int	main(int argc, char *argv[])
 		printf("Error.\n");
 		return (-1);
 	}
-	if (argc == 2 && argv[1][0] == '$')
+	if (argc == 2)
 		stack_a = init_stack_a_with_var(stack_a, argv);
 	else
 		stack_a = init_stack_a(stack_a, argv);
-/* 	printf("Init :\na : ");
-	print_list(stack_a);
-	printf("b : ");
-	print_list(stack_b); */
 	push_swap(&stack_a, &stack_b);
-/* 	printf("\nAfter :\na : ");
-	print_list(stack_a); */
 	if (check_sorted(stack_a) == True)
 		printf("OK\n");
 	else

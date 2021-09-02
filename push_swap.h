@@ -96,8 +96,14 @@ void		solve_2(t_list **stack_a);
 */
 
 void		solve_half(t_list **stack_a, t_list **stack_b);
-long int	*convert_in_array(t_list *stack);
-long int	*sort_array(long int *array, size_t size);
+void		a_to_b(t_list **stack_a, t_list **stack_b, t_list **chunks);
+void		b_to_a(t_list **stack_a, t_list **stack_b, t_list **chunks);
+size_t		find_size_chunk_a(t_list *stack);
+size_t		find_size_chunk_b(t_list *stack);
+size_t		a_to_b_ope(t_list **stack_a, t_list **stack_b,
+				t_list **chunk, long int median);
+void		b_to_a_ope(t_list **s_a, t_list **stack_b,
+				t_list **chunks, long int median);
 
 /*
 ** solve_half_utils.c

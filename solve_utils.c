@@ -36,10 +36,12 @@ long int	find_big(t_list **stack)
 
 long int	find_median(t_list *stack)
 {
-	size_t		size;
 	long int	*array;
+	long int	ret;
 
 	array = convert_in_array(stack);
 	array = sort_array(array, ft_lstsize(stack));
-	return (array[ft_lstsize(stack) / 2]);
+	ret = array[ft_lstsize(stack) / 2];
+	free(array);
+	return (ret);
 }
