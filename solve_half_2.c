@@ -6,11 +6,26 @@
 /*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:44:43 by walker            #+#    #+#             */
-/*   Updated: 2021/09/02 20:45:37 by walker           ###   ########.fr       */
+/*   Updated: 2021/09/03 20:49:13 by walker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_chunks(t_list **chunks)
+{
+	t_list		*next;
+
+	next = NULL;
+	while ((*chunks))
+	{
+		next = (*chunks)->next;
+		lst_free((*chunks)->content);
+		free((*chunks));
+		(*chunks) = next;
+	}
+	free((*chunks));
+}
 
 size_t	a_to_b_ope(t_list **stack_a, t_list **stack_b,
 	t_list **chunk, long int median)

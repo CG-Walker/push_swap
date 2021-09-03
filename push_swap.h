@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/03 21:02:21 by walker            #+#    #+#             */
+/*   Updated: 2021/09/03 21:02:21 by walker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -5,7 +17,6 @@
 # include <stdio.h>
 # include <dirent.h>
 # include <stdlib.h>
-//# include <malloc.h>
 # include <limits.h>
 
 # include "libft/libft.h"
@@ -104,6 +115,7 @@ size_t		a_to_b_ope(t_list **stack_a, t_list **stack_b,
 				t_list **chunk, long int median);
 void		b_to_a_ope(t_list **s_a, t_list **stack_b,
 				t_list **chunks, long int median);
+void		free_chunks(t_list **chunks);
 
 /*
 ** solve_half_utils.c
@@ -113,6 +125,7 @@ long int	*sort_array(long int *array, size_t size);
 long int	*convert_in_array(t_list *stack);
 void		lst_copy(t_list **alst, t_list *list_to_copy);
 void		del_nb(void *nb, t_list **chunk);
+void		lst_free(t_list *list);
 
 /*
 ** solve_utils.c

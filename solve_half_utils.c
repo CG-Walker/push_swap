@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solve_half_utils.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/03 20:53:28 by walker            #+#    #+#             */
+/*   Updated: 2021/09/03 20:55:32 by walker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 long int	*sort_array(long int *array, size_t size)
@@ -67,12 +79,15 @@ void	lst_copy(t_list **alst, t_list *list_to_copy)
 {
 	t_list	*tmp_list;
 	t_list	*begin;
+	t_list	*tmp;
 
 	begin = list_to_copy;
 	tmp_list = NULL;
+	tmp = NULL;
 	while (list_to_copy != NULL)
 	{
-		ft_lstadd_front(&tmp_list, ft_lstnew(list_to_copy->content));
+		tmp = ft_lstnew(list_to_copy->content);
+		ft_lstadd_front(&tmp_list, tmp);
 		list_to_copy = list_to_copy->next;
 	}
 	ft_lstadd_front(alst, ft_lstnew(tmp_list));
@@ -83,15 +98,28 @@ void	lst_copy(t_list **alst, t_list *list_to_copy)
 void	del_nb(void *nb, t_list **chunk)
 {
 	t_list	*begin;
+	t_list	*to_free;
 
 	begin = (*chunk);
+	to_free = NULL;
 	if ((*chunk)->content == nb)
+	{
+		to_free = (*chunk);
 		begin = (*chunk)->next;
+	}
 	while ((*chunk) && (*chunk)->next && (*chunk)->next->content != nb)
 		(*chunk) = (*chunk)->next;
 	if ((*chunk)->next && (*chunk)->next->next)
+	{
+		to_free = (*chunk)->next;
 		(*chunk)->next = (*chunk)->next->next;
+	}
 	else
+	{
+		if ((*chunk)->next)
+			to_free = (*chunk)->next;
 		(*chunk)->next = NULL;
+	}
+	free(to_free);
 	(*chunk) = begin;
 }

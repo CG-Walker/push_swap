@@ -71,29 +71,26 @@ void	a_to_b(t_list **stack_a, t_list **stack_b, t_list **chunks)
 	}
 }
 
-void	b_to_a(t_list **stack_a, t_list **stack_b, t_list **chunks)
+void	b_to_a(t_list **s_a, t_list **s_b, t_list **chunks)
 {
-	long int	median;
-
-	while (ft_lstsize((*stack_b)) > 2)
+	while (ft_lstsize((*s_b)) > 2)
 	{
 		while (ft_lstsize((*chunks)->content) > 2)
 		{
-			median = find_median((*chunks)->content);
-			b_to_a_ope(stack_a, stack_b, chunks, median);
-			if (check_sorted((*stack_a)) == False)
-				a_to_b(stack_a, stack_b, chunks);
+			b_to_a_ope(s_a, s_b, chunks, find_median((*chunks)->content));
+			if (check_sorted((*s_a)) == False)
+				a_to_b(s_a, s_b, chunks);
 		}
 		if (ft_lstsize((*chunks)->content) == 2)
 		{
-			if ((intptr_t)(*stack_b)->content <
-				(intptr_t)(*stack_b)->next->content)
-				do_sb(stack_b, True);
-			do_pa(stack_a, stack_b, True);
-			do_pa(stack_a, stack_b, True);
+			if ((intptr_t)(*s_b)->content <
+				(intptr_t)(*s_b)->next->content)
+				do_sb(s_b, True);
+			do_pa(s_a, s_b, True);
+			do_pa(s_a, s_b, True);
 		}
 		else if (ft_lstsize((*chunks)->content) != 0)
-			do_pa(stack_a, stack_b, True);
+			do_pa(s_a, s_b, True);
 		(*chunks) = (*chunks)->next;
 	}
 }
@@ -101,8 +98,13 @@ void	b_to_a(t_list **stack_a, t_list **stack_b, t_list **chunks)
 void	solve_half(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*chunks;
+	t_list	*begin;
 
 	chunks = NULL;
 	a_to_b(stack_a, stack_b, &chunks);
+	begin = chunks;
 	b_to_a(stack_a, stack_b, &chunks);
+	chunks = begin;
+	free_chunks(&chunks);
+	free(chunks);
 }

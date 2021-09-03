@@ -1,5 +1,5 @@
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -ggdb3
 SRC			=	checks.c do_ope_1.c do_ope_2.c do_ope_3.c \
 				init_stack_a.c ope.c read_line.c \
 				solve_half.c solve_half_2.c solve_half_utils.c \
@@ -36,6 +36,7 @@ clean:
 
 fclean:		clean
 			@rm -f $(NAME)
+			@rm -f checker
 			@rm -f libft/libft.a
 			@rm -f libft.a
 			@rm -f libft/*.o
@@ -45,15 +46,15 @@ fclean:		clean
 
 re:			fclean all
 
-5:			re
+5:			all
 			@ARG=`ruby -e "puts (1..5).to_a.shuffle.join(' ')"`; ./$(NAME) $$ARG 
 
-100:		re
+100:		all
 			@ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./$(NAME) $$ARG 
 
-500:		re
+500:		all
 			@ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; ./$(NAME) $$ARG 
 
 leaks:		re
 			@ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
-			valgrind --leak-check=full ./push_swap $$ARG
+			valgrind --leak-check=full --verbose --track-origins=yes ./push_swap "5 1 6 4 8 9 45 54 456 1518 984 5655 4512"

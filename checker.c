@@ -6,7 +6,7 @@
 /*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:15:51 by cgoncalv          #+#    #+#             */
-/*   Updated: 2021/08/28 16:52:33 by walker           ###   ########.fr       */
+/*   Updated: 2021/09/02 20:54:17 by walker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char *argv[])
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc == 2 && argv[1][0] == '$')
+	if (argc == 2)
 		stack_a = init_stack_a_with_var(stack_a, argv);
 	else
 		stack_a = init_stack_a(stack_a, argv);
