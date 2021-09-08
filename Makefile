@@ -1,5 +1,5 @@
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -ggdb3
+CFLAGS		=	-Wall -Werror -Wextra
 SRC			=	checks.c do_ope_1.c do_ope_2.c do_ope_3.c \
 				init_stack_a.c ope.c read_line.c \
 				solve_half.c solve_half_2.c solve_half_utils.c \
