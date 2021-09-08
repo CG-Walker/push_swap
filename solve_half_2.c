@@ -6,7 +6,7 @@
 /*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:44:43 by walker            #+#    #+#             */
-/*   Updated: 2021/09/03 20:49:13 by walker           ###   ########.fr       */
+/*   Updated: 2021/09/08 18:10:20 by walker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ void	free_chunks(t_list **chunks)
 		next = (*chunks)->next;
 		lst_free((*chunks)->content);
 		free((*chunks));
+		(*chunks) = NULL;
 		(*chunks) = next;
 	}
 	free((*chunks));
+	(*chunks) = NULL;
 }
 
 size_t	a_to_b_ope(t_list **stack_a, t_list **stack_b,

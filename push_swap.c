@@ -58,8 +58,9 @@ int	main(int argc, char *argv[])
 		stack_a = init_stack_a(stack_a, argv);
 	push_swap(&stack_a, &stack_b);
 	if (check_sorted(stack_a) == True)
-		printf("OK\n");
-	else
-		printf("KO\n");
+	{
+		lst_free(stack_a);
+		lst_free(stack_b);
+	}
 	exit(0);
 }
