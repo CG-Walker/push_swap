@@ -44,15 +44,15 @@ char	*sh_read_line(void)
 {
 	char	buff[SH_LINE_BUFFSIZE + 1];
 	char	*str;
-	size_t	ret;
+	int		ret;
 
 	str = NULL;
 	while (1)
 	{
-		ret = read(1, buff, SH_LINE_BUFFSIZE);
+		ret = read(STDIN_FILENO, buff, SH_LINE_BUFFSIZE);
 		buff[ret] = 0;
 		str = stradd(str, buff);
-		if (ft_strchr(buff, '\n') != NULL)
+		if (ret == 0)
 			break ;
 	}
 	return (str);

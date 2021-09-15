@@ -6,7 +6,7 @@
 /*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:44:43 by walker            #+#    #+#             */
-/*   Updated: 2021/09/08 18:10:20 by walker           ###   ########.fr       */
+/*   Updated: 2021/09/15 19:41:46 by walker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 void	free_chunks(t_list **chunks)
 {
-	t_list		*next;
+	t_list	*next;
 
 	next = NULL;
+	printf("-------------------\n");
+	printf("Chunks :\n");
 	while ((*chunks))
 	{
 		next = (*chunks)->next;
 		lst_free((*chunks)->content);
+		printf("Freeing %p\n", (*chunks));
 		free((*chunks));
-		(*chunks) = NULL;
 		(*chunks) = next;
 	}
 	free((*chunks));
+	printf("-------------------\n");
 	(*chunks) = NULL;
 }
 

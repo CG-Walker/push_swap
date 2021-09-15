@@ -1,5 +1,5 @@
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -g
 SRC			=	checks.c do_ope_1.c do_ope_2.c do_ope_3.c \
 				init_stack_a.c ope.c read_line.c \
 				solve_half.c solve_half_2.c solve_half_utils.c \
@@ -58,3 +58,10 @@ re:			fclean all
 leaks:		re
 			@ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
 			valgrind --leak-check=full --verbose --track-origins=yes ./push_swap "5 1 6 4 8 9 45 54 456 1518 984 5655 4512"
+
+debug:		fclean
+			@$(CC) $(CFLAGS) -g -c $(SRC) push_swap.c
+			@make -C ./libft
+			@cp ./libft/libft.a $(LIBNAME)
+			@$(CC) ${OBJ} push_swap.o $(LIBNAME) -o $(NAME)
+			@echo "\033[32m[✓]\033[0m		[$(NAME) compiled]"

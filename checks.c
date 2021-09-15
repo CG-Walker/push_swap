@@ -74,6 +74,13 @@ static t_bool	check_args(char *argv[])
 	return (True);
 }
 
+/* static t_bool	check_min_max(char *argv[])
+{
+
+	return (True);
+}
+ */
+
 t_bool	check_all(char *argv[])
 {
 	if (check_args(argv) == False)
