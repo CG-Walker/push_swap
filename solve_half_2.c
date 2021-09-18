@@ -6,30 +6,26 @@
 /*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:44:43 by walker            #+#    #+#             */
-/*   Updated: 2021/09/15 19:41:46 by walker           ###   ########.fr       */
+/*   Updated: 2021/09/18 16:40:42 by walker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_chunks(t_list **chunks)
+t_bool	b_to_a_free(t_list **chunks)
 {
-	t_list	*next;
-
-	next = NULL;
-	printf("-------------------\n");
-	printf("Chunks :\n");
-	while ((*chunks))
+	if ((*chunks) && (*chunks)->next == NULL)
 	{
-		next = (*chunks)->next;
-		lst_free((*chunks)->content);
-		printf("Freeing %p\n", (*chunks));
-		free((*chunks));
-		(*chunks) = next;
+		free(*chunks);
+		return (True);
 	}
-	free((*chunks));
-	printf("-------------------\n");
-	(*chunks) = NULL;
+	(*chunks) = (*chunks)->next;
+	if (*chunks)
+	{
+		free((*chunks)->previous);
+		(*chunks)->previous = NULL;
+	}
+	return (False);
 }
 
 size_t	a_to_b_ope(t_list **stack_a, t_list **stack_b,

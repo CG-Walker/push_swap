@@ -3,7 +3,7 @@ CFLAGS		=	-Wall -Werror -Wextra -g
 SRC			=	checks.c do_ope_1.c do_ope_2.c do_ope_3.c \
 				init_stack_a.c ope.c read_line.c \
 				solve_half.c solve_half_2.c solve_half_utils.c \
-				solve_less_than_5.c solve_utils.c
+				solve_less_than_5.c solve_utils.c #debug.C
 				
 OBJ 		=	$(SRC:.c=.o)
 NAME		=	push_swap

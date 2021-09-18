@@ -6,7 +6,7 @@
 /*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:15:51 by cgoncalv          #+#    #+#             */
-/*   Updated: 2021/09/15 17:19:57 by walker           ###   ########.fr       */
+/*   Updated: 2021/09/18 16:31:50 by walker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,6 @@ t_bool	do_instr_2(char *instr, t_list **stack_a, t_list **stack_b)
 	else
 		return (False);
 	return (True);
-}
-
-void	print_list(t_list *stack)
-{
-	t_list	*begin;
-
-	begin = stack;
-	while (stack != NULL)
-	{
-		printf("%li ", (intptr_t)stack->content);
-		stack = stack->next;
-	}
-	printf("\n");
-	stack = begin;
 }
 
 void	check_and_free(t_list **stack_a, t_list **stack_b)

@@ -33,6 +33,8 @@ void	ope_pa(t_list **stack_a, t_list **stack_b)
 	new = ft_lstnew((*stack_b)->content);
 	new_begin = (*stack_b)->next;
 	free((*stack_b));
+	if (new_begin)
+		new_begin->previous = NULL;
 	(*stack_b) = new_begin;
 	ft_lstadd_front(stack_a, new);
 	return ;
@@ -48,6 +50,8 @@ void	ope_pb(t_list **stack_a, t_list **stack_b)
 	new = ft_lstnew((*stack_a)->content);
 	new_begin = (*stack_a)->next;
 	free((*stack_a));
+	if (new_begin)
+		new_begin->previous = NULL;
 	(*stack_a) = new_begin;
 	ft_lstadd_front(stack_b, new);
 	return ;

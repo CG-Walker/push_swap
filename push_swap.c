@@ -24,20 +24,6 @@ int	push_swap(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-void	print_list(t_list *stack)
-{
-	t_list	*begin;
-
-	begin = stack;
-	while (stack != NULL)
-	{
-		printf("%li ", (intptr_t)stack->content);
-		stack = stack->next;
-	}
-	printf("\n");
-	stack = begin;
-}
-
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;

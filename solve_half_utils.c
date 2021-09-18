@@ -6,7 +6,7 @@
 /*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 20:53:28 by walker            #+#    #+#             */
-/*   Updated: 2021/09/15 19:55:41 by walker           ###   ########.fr       */
+/*   Updated: 2021/09/18 16:33:00 by walker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	lst_free(t_list *list)
 	while (list)
 	{
 		next = list->next;
-		printf("Freeing %ld (%p)\n", (intptr_t)list->content, list);
 		free(list);
 		list = next;
 	}
@@ -82,34 +81,25 @@ void	lst_free(t_list *list)
 Copie la liste list_to_copy dans la liste alst et free list_to_copy. */
 void	lst_copy(t_list **chunks, t_list *list_to_copy)
 {
-	t_list	*tmp_list;
+	t_list	*list_copy;
 	t_list	*begin;
 	t_list	*tmp;
-	t_list	*tmp_2;
 
 	begin = list_to_copy;
-	tmp_list = NULL;
+	list_copy = NULL;
 	tmp = NULL;
 	while (list_to_copy != NULL)
 	{
 		tmp = ft_lstnew(list_to_copy->content);
-		ft_lstadd_front(&tmp_list, tmp);
+		ft_lstadd_front(&list_copy, tmp);
 		list_to_copy = list_to_copy->next;
 	}
-	tmp_2 = ft_lstnew(tmp_list);
-	ft_lstadd_front(chunks, tmp_2);
-	printf("Malloc %p\n", tmp_2);
+	tmp = ft_lstnew(list_copy);
+	ft_lstadd_front(chunks, tmp);
 	list_to_copy = begin;
 	lst_free(list_to_copy);
 }
 
-/* 
-[del_nb]
-Supprime le nombe nb du chunk.
-
-if 1 : Si le nombre cherché est le premier
-if 2 : Si le nombre cherché n'est ni le premier ni le dernier
-else : Si le nombre cherché est le dernier */
 void	del_nb(void *nb, t_list **chunk)
 {
 	t_list	*begin;

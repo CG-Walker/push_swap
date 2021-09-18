@@ -74,12 +74,21 @@ static t_bool	check_args(char *argv[])
 	return (True);
 }
 
-/* static t_bool	check_min_max(char *argv[])
+static t_bool	check_min_max(char *argv[])
 {
+	size_t	i;
+	long	nb;
 
+	i = 0;
+	while (argv[i])
+	{
+		nb = ft_atoi(argv[i]);
+		if (nb > INT_MAX || nb < INT_MIN)
+			return (False);
+		i++;
+	}
 	return (True);
 }
- */
 
 t_bool	check_all(char *argv[])
 {
@@ -91,6 +100,11 @@ t_bool	check_all(char *argv[])
 	if (check_double(argv) == True)
 	{
 		printf("<Same number twice or more in list>\n");
+		return (False);
+	}
+	if (check_min_max(argv) == False)
+	{
+		printf("<Number(s) higher than Max Int or lower than Min Int>\n");
 		return (False);
 	}
 	return (True);

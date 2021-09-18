@@ -88,23 +88,20 @@ void	b_to_a(t_list **s_a, t_list **s_b, t_list **chunks)
 				do_sb(s_b, True);
 			do_pa(s_a, s_b, True);
 			do_pa(s_a, s_b, True);
+			lst_free((*chunks)->content);
 		}
 		else if (ft_lstsize((*chunks)->content) != 0)
 			do_pa(s_a, s_b, True);
-		(*chunks) = (*chunks)->next;
+		if (b_to_a_free(chunks) == True)
+			break ;
 	}
 }
 
 void	solve_half(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*chunks;
-	t_list	*begin;
 
 	chunks = NULL;
 	a_to_b(stack_a, stack_b, &chunks);
-	begin = chunks;
 	b_to_a(stack_a, stack_b, &chunks);
-	chunks = begin;
-	free_chunks(&chunks);
-	free(chunks);
 }

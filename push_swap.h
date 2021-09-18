@@ -31,7 +31,8 @@ typedef struct s_chunks
 ** DEBUG
 */
 
-void		print_list(t_list *stack);
+void		print_list(t_list *stack, char *stack_name);
+void		display_chunk(t_list **chunks);
 
 /*
 ** checker.c
@@ -115,7 +116,7 @@ size_t		a_to_b_ope(t_list **stack_a, t_list **stack_b,
 				t_list **chunk, long int median);
 void		b_to_a_ope(t_list **s_a, t_list **stack_b,
 				t_list **chunks, long int median);
-void		free_chunks(t_list **chunks);
+t_bool		b_to_a_free(t_list **chunks);
 
 /*
 ** solve_half_utils.c
