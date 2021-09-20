@@ -6,7 +6,7 @@
 /*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 20:53:28 by walker            #+#    #+#             */
-/*   Updated: 2021/09/18 16:33:00 by walker           ###   ########.fr       */
+/*   Updated: 2021/09/20 17:53:31 by walker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,31 @@ void	lst_copy(t_list **chunks, t_list *list_to_copy)
 void	del_nb(void *nb, t_list **chunk)
 {
 	t_list	*begin;
+	t_list	*previous;
+	t_list	*next;
+
+	if ((*chunk)->content != nb)
+		begin = *chunk;
+	else
+		begin = (*chunk)->next;
+	while (*chunk && (*chunk)->content != nb)
+		*chunk = (*chunk)->next;
+	if ((*chunk)->content == nb)
+	{
+		previous = (*chunk)->previous;
+		next = (*chunk)->next;
+		if ((*chunk)->previous)
+			(*chunk)->previous->next = next;
+		if ((*chunk)->next)
+			(*chunk)->next->previous = previous;
+		free(*chunk);
+	}
+	*chunk = begin;
+}
+
+/* void	del_nb(void *nb, t_list **chunk)
+{
+	t_list	*begin;
 	t_list	*to_free;
 
 	begin = (*chunk);
@@ -127,4 +152,4 @@ void	del_nb(void *nb, t_list **chunk)
 	}
 	free(to_free);
 	(*chunk) = begin;
-}
+} */

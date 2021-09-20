@@ -91,7 +91,10 @@ void	b_to_a(t_list **s_a, t_list **s_b, t_list **chunks)
 			lst_free((*chunks)->content);
 		}
 		else if (ft_lstsize((*chunks)->content) != 0)
+		{
 			do_pa(s_a, s_b, True);
+			lst_free((*chunks)->content);
+		}
 		if (b_to_a_free(chunks) == True)
 			break ;
 	}
