@@ -45,7 +45,7 @@ t_bool		do_instr_2(char *instr, t_list **stack_a, t_list **stack_b);
 ** checks.c
 */
 
-t_bool		check_all(char *argv[]);
+t_bool		check_all(int argc, char *argv[]);
 t_bool		check_sorted(t_list *stack);
 
 /*

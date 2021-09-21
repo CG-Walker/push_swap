@@ -90,19 +90,25 @@ static t_bool	check_min_max(char *argv[])
 	return (True);
 }
 
-t_bool	check_all(char *argv[])
+t_bool	check_all(int argc, char *argv[])
 {
-	if (check_args(argv) == False)
+	char	**args;
+
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
+		args = argv;
+	if (check_args(args) == False)
 	{
 		printf("<Non-digit arg detected>\n");
 		return (False);
 	}
-	if (check_double(argv) == True)
+	if (check_double(args) == True)
 	{
 		printf("<Same number twice or more in list>\n");
 		return (False);
 	}
-	if (check_min_max(argv) == False)
+	if (check_min_max(args) == False)
 	{
 		printf("<Number(s) higher than Max Int or lower than Min Int>\n");
 		return (False);

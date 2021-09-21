@@ -33,7 +33,7 @@ int	main(int argc, char *argv[])
 	stack_b = NULL;
 	if (argc < 2)
 		return (-1);
-	if (check_all(argv) == False)
+	if (check_all(argc, argv) == False)
 	{
 		printf("Error.\n");
 		return (-1);

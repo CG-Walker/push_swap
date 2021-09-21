@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cgoncalv <cgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:15:51 by cgoncalv          #+#    #+#             */
-/*   Updated: 2021/09/18 16:31:50 by walker           ###   ########.fr       */
+/*   Updated: 2021/09/21 17:52:49 by cgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main(int argc, char *argv[])
 	i = 0;
 	stack_a = NULL;
 	stack_b = NULL;
-	if (check_all(argv) == False)
+	if (argc < 2 || check_all(argc, argv) == False)
 		return (-1);
 	if (argc == 2)
 		stack_a = init_stack_a_with_var(stack_a, argv);
