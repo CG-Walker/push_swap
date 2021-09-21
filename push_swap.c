@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+void	print_list(t_list *stack, char *stack_name)
+{
+	t_list	*begin;
+
+	begin = stack;
+	printf("[%s] : ", stack_name);
+	while (stack != NULL)
+	{
+		printf("%li ", (intptr_t)stack->content);
+		stack = stack->next;
+	}
+	printf("\n");
+	stack = begin;
+}
+
 int	push_swap(t_list **stack_a, t_list **stack_b)
 {
 	if ((check_sorted(*stack_a)) == False)

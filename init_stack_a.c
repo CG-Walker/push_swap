@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: walker <walker@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cgoncalv <cgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:34:36 by cgoncalv          #+#    #+#             */
-/*   Updated: 2021/09/02 18:22:57 by walker           ###   ########.fr       */
+/*   Updated: 2021/09/21 18:00:55 by cgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ t_list	*init_stack_a(t_list *stack_a, char *argv[])
 	intptr_t	nb;
 	t_list		*new;
 
-	if (ft_isdigit(argv[0][0]))
-		i = 0;
-	else
-		i = 1;
+	i = 0;
 	while (argv[i])
 	{
 		nb = ft_atoi(argv[i]);
